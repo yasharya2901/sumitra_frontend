@@ -2,7 +2,7 @@ import { View, Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { icons } from '../../constants'
 
-const LoginField = ({value, placeholder, handleChangeText, secureTextEntry=false, keyboardType="default"}) => {
+const LoginField = ({value, placeholder, handleChangeText, secureTextEntry=false, keyboardType="default", onSubmitEditing}) => {
     const [showPassword, setShowPassword] = useState(false)
   return (
     <View className={`border-[1px] h-14 w-full border-gray-400 rounded-xl flex mt-2 mb-2 flex-row items-center`}>
@@ -13,6 +13,8 @@ const LoginField = ({value, placeholder, handleChangeText, secureTextEntry=false
             onChangeText={handleChangeText}
             secureTextEntry={placeholder === 'Password' && !showPassword}
             keyboardType={keyboardType}
+            onSubmitEditing={onSubmitEditing}
+            returnKeyType="done"
         />
         {placeholder === "Password" && (
             <TouchableOpacity activeOpacity={0.7} onPress={()=>setShowPassword(!showPassword)} className="p-2">

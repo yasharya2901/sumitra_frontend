@@ -14,12 +14,22 @@ const SignIn = () => {
 
   const submit = async () => {
     try {
-      router.replace('/home')
+      router.replace('/(pages)/home')
+        console.log(form);
     } catch (error) {
       Alert.alert('Error', error.message)
     }
   }
 
+  const sendOTP = async () => {
+    try {
+      console.log('send otp');
+      
+      console.log(form);
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    }
+  }
 
   return (
     <SafeAreaView className="flex flex-col p-4 h-full justify-between bg-white">
@@ -39,6 +49,7 @@ const SignIn = () => {
               value={form.mobile}
               handleChangeText={(e) => setForm({...form, mobile: e})}
               keyboardType='phone-pad'
+              onSubmitEditing={sendOTP}
             />
  
             <LoginField
@@ -46,8 +57,9 @@ const SignIn = () => {
                 value={form.otp}
                 handleChangeText={(e) => setForm({...form, otp: e})}
                 keyboardType='number-pad'
+                onSubmitEditing={submit}
             />
-            <TouchableOpacity activeOpacity={0.8} onPress={()=>{}}>
+            <TouchableOpacity activeOpacity={0.8} onPress={sendOTP}>
               <Text className={`font-pmedium text-sm text-right`}>{"Send OTP"}</Text>
             </TouchableOpacity>
           </View>
@@ -56,7 +68,7 @@ const SignIn = () => {
       <View className={`h-14`}>
         <View className="flex flex-row">
             <View className="flex-1">
-                <CustomButton buttonStyle="bg-red-400 rounded-md ml-2" textStyle={`font-pbold text-base`} text='Sign In' handlePress={()=>{}}/>
+                <CustomButton buttonStyle="bg-red-400 rounded-md ml-2" textStyle={`font-pbold text-base`} text='Sign In' handlePress={submit}/>
             </View>
         </View>
       </View>
