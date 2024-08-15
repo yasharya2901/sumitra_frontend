@@ -49,6 +49,7 @@ const SignIn = () => {
               value={form.mobile}
               handleChangeText={(e) => setForm({...form, mobile: e})}
               keyboardType='phone-pad'
+              onSubmitEditing={sendOTP}
             />
  
             <LoginField
@@ -56,6 +57,7 @@ const SignIn = () => {
                 value={form.otp}
                 handleChangeText={(e) => setForm({...form, otp: e})}
                 keyboardType='number-pad'
+                onSubmitEditing={submit}
             />
             <TouchableOpacity activeOpacity={0.8} onPress={sendOTP}>
               <Text className={`font-pmedium text-sm text-right`}>{"Send OTP"}</Text>
